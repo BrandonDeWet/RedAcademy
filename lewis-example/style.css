@@ -38,3 +38,9 @@ button {
 button:hover {
     background-color: #8f1a1f;
 }
+
+/* This class will only be applied after the button is clicked */
+.dark-theme {
+    background-color: #1f2937;
+    color: rgb(14, 1, 1);
+}
