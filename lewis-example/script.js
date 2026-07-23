@@ -17,7 +17,7 @@ customerButton.addEventListener("click", function () {
         "Welcome! Please speak to a sales consultant if you need assistance. Hi how are you ";
 
     // Display a browser popup.
-    alert("Thank you for visiting Lewis Furniture Store.");
+    prompt("Thank you for visiting Lewis Furniture Store.");
 
     // Record the click for testing.
     console.log("The customer message was displayed.");
