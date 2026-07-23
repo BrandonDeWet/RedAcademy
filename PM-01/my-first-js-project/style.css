@@ -1,0 +1,22 @@
+/*Style.css controls how the page looks. */
+body {
+	font-family: Arial, san-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 40px;
+}
+
+.card {
+	max-width: 520px;
+	background-color: white;
+	padding: 24px;
+	border-left: 6px solid #c8102e;
+}
+
+button {
+	background-color: #c8102e;
+	color: white;
+	border: none;
+	padding: 10px 16px;
+	cursor: pointer;
+}
