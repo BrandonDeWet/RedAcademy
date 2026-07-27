@@ -6,8 +6,7 @@ body {
     padding: 40px;
 }
 
-
-/* This section will be used to add styling to the container id from the HTML */
+/* This section will be used to add styling to the form-container class id from the HTML */
 .form-container {
     width: 750px;
     margin: auto;
@@ -16,20 +15,48 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 15px rgb(44, 44, 44);
 }
-
+/* Updates your H1 heading tag in your HTML */
 h1 {
    text-align: center;
+   color: #e01f26;
 }
-
+/* Updates your form-group id class in your HTML */
 .form-group {
     width: 300px;
     margin: auto;
     margin-bottom: 20px;
 }
 
-button {
-    background: #e01f26;
-    color: white;
-    border: black;
-    padding: 50px, 75px;
+/* These lables are found inside of your div classes */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: medium;
+    font-weight: bold;
 }
+
+/* This will update your input section for the text area  */
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+    font-size:16px;
+}
+
+/* Submit Button styling */
+button{
+    width:100%;
+    padding:12px;
+    background:#ca0707;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:18px;
+}
+
