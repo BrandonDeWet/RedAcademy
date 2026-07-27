@@ -59,4 +59,7 @@ button{
     cursor:pointer;
     font-size:18px;
 }
-
+/* Adds functionality for hovering over a button */
+button:hover{
+    background-color: #7c0505;
+}
