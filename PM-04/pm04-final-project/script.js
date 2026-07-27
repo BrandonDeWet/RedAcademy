@@ -1,7 +1,7 @@
 // Logs out to the Console when JS gets loaded via the HTML page
 console.log("JavaScript file loaded.");
 
-//The welcomeBtn is the ID given to the button in HTML
+//The requestSend is the ID given to the button in HTML
 const button = document.getElementById("requestSend");
 
 button.addEventListener("click", function() {
