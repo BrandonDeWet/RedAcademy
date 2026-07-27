@@ -1,11 +1,35 @@
+/* This is to style the body id from the HTML */
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #dadada;
+    margin: 0;
+    padding: 40px;
+}
+
+
+/* This section will be used to add styling to the container id from the HTML */
+.form-container {
+    width: 750px;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgb(44, 44, 44);
+}
+
+h1 {
+   text-align: center;
+}
+
+.form-group {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 button {
     background: #e01f26;
     color: white;
-    border: none;
-    padding: 10px, 16px;
+    border: black;
+    padding: 50px, 75px;
 }
