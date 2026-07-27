@@ -16,8 +16,10 @@
          <a href="index.html">
             <img src="sources/redacademylogo.png" alt="RedAcademy-Logo" width="150" height="50">
          </a>
+
         <!-- Heading 1 (Largest heading style) -->
         <h1>Resource Request Form</h1>
+
         <!-- Requester name (Text Box) -->
         <form id="requestForm">
             <div class="form-group">
@@ -27,11 +29,12 @@
                     id="requesterName"
                     placeholder="Enter your Name:"
                     required>
+                    <!-- Adding "required makes a field required to be filled in" -->
             </div>
+
             <!-- This will hold the sections for Department selection (DropDown box) -->
             <div class="form-group">
                 <label for="department">Department</label>
-
                 <select id="department" required>
                     <option value="">-- Select Department --</option>
                     <option>Helpdesk</option>
@@ -40,10 +43,10 @@
                     <option>DevOps</option>
                 </select>                
             </div>
+
             <!-- Resource type list (DropDown) -->
             <div class="form-group">
                 <label for="department">Resource Type</label>
-
                 <select id="resourceType" required>
                     <option value="">-- Select Resource --</option>
                     <option>Stationary</option>
@@ -55,20 +58,20 @@
                     <option>Request Training Material</option>
                 </select>
             </div>
+
             <!-- Description (TextArea to allow user to type descrition of problem needing resolve) -->
         <div class="form-group">
-            <label for="details">Quantity / Description</label>
-
+            <label for="details">Description</label>
             <textarea
                 id="details"
                 rows="4"
                 placeholder="Please provide a brief description of your request..."
                 required></textarea>
         </div>
+
         <!-- Priority level (CheckBox) -->
         <div class="form-group">
             <label for="priority">Priority</label>
-
             <select id="urgency" required>
                 <option value="">-- Select Priority --</option>
                 <option>Low</option>
