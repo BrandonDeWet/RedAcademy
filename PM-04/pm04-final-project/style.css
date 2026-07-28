@@ -20,6 +20,12 @@ h1 {
    text-align: center;
    color: #e01f26;
 }
+
+/* Updates your H1 heading tag in your HTML */
+h2 {
+   text-align: center;
+}
+
 /* Updates your form-group id class in your HTML */
 .form-group {
     width: 300px;
@@ -68,8 +74,9 @@ button:hover{
 .summary{
     margin-top:35px;
     padding:20px;
-    background: white;
-    border-radius:8px;
+    background: rgb(197, 196, 196);
+    border-radius:15px;
+    box-shadow: 0 0 15px rgb(44, 44, 44);
 }
 
 /* Adds functionality to the id request-list*/
@@ -78,7 +85,7 @@ button:hover{
 }
 /* Adds functionality to the unordered list for the id request-list */
 .request-list li{
-    background: white;
+    background: rgb(197, 196, 196);
     margin-bottom:10px;
     padding:15px;
     border-left:5px solid #ca0707;
