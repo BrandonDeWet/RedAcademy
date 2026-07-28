@@ -25,6 +25,7 @@ form.addEventListener("submit",function(event){
   requests.push(request);
   displaySummary(request);
   displayRequestList();
+  checkPriorityLevel(request.priority);
 });
 
 // Logs out to the Console when JS gets loaded via the HTML page
@@ -63,6 +64,17 @@ function displayRequestList(){
   requestList.appendChild(providedValues);
   });
 
+}
+
+// Function to call Priority Level
+function checkPriorityLevel(level){
+  if (level === "Low") {
+    priorityLevel.innerHTML = request.resource + " has been marked as Low Priority";
+  } 
+  else if (level === "Medium") {
+    priorityLevel.innerHTML = request.resource + " has been marked as Medium Priority";
+  }
+  console.log("User: " + request.requester + "has created a " +  request.priority + " request.")
 }
 
 //The requestSend is the ID given to the button in HTML
