@@ -2,13 +2,100 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>My First Web Page</title>
+        <!-- Set dynamic scale for different devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title displays the URL tab on your browser -->
+        <title>RedAcademy - Resource Request Form</title>
+        <!-- Link to css file -->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Welcome to My Department</h1>
-        <p id="intro">This page introduces my team</p>
-        <button id="welcomeBtn">Click Me</button>
+    <!-- A div will indicate content division -->
+    <div class="form-container">
+        <!-- Adding a Logo to make my project look more profesh -->
+         <a href="index.html">
+            <img src="sources/redacademylogo.png" alt="RedAcademy-Logo" width="150" height="50">
+         </a>
+
+        <!-- Heading 1 (Largest heading style) -->
+        <h1>Resource Request Form</h1>
+
+        <!-- Requester name (Text Box) -->
+        <form id="requestForm">
+            <div class="form-group">
+                <label for="requesterName">Request Name</label>
+                <input
+                    type="text"
+                    id="requesterName"
+                    placeholder="Enter your Name:"
+                    required>
+                    <!-- Adding "required makes a field required to be filled in" -->
+            </div>
+
+            <!-- This will hold the sections for Department selection (DropDown box) -->
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" required>
+                    <option value="">-- Select Department --</option>
+                    <option>Helpdesk</option>
+                    <option>Infrastructure</option>
+                    <option>Production Support</option>
+                    <option>DevOps</option>
+                </select>                
+            </div>
+
+            <!-- Resource type list (DropDown) -->
+            <div class="form-group">
+                <label for="department">Resource Type</label>
+                <select id="resourceType" required>
+                    <option value="">-- Select Resource --</option>
+                    <option>Hardware Fault</option>
+                    <option>Software Fault</option>
+                    <option>API Error</option>
+                    <option>Server Unavailable</option>
+                </select>
+            </div>
+
+            <!-- Description (TextArea to allow user to type description of problem needing resolve) -->
+        <div class="form-group">
+            <label for="details">Description</label>
+            <textarea
+                id="details"
+                rows="4"
+                placeholder="Please provide a brief description of your request..."
+                required></textarea>
+        </div>
+
+        <!-- Priority level (CheckBox) -->
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <select id="urgency" required>
+                <option value="">-- Select Priority --</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+                <option>Critical</option>
+            </select>
+        </div>
+        <!-- Submit button moved into the form request -->
+        <button id="requestSend" type="submit">Submit Request</button>
+        </form>
+        
+        <!-- This section was added to have the latest output of the user details displayed in its own section and added a placeholder -->
+        <div class="summary">
+            <h2>Your Request Output</h2>
+            <div id="summaryContent">
+                No prior requests received.
+            </div>
+        </div>
+        <!-- This section was added to have the output of the list chosen by the user  -->
+        <div class="request-list">
+            <h2>History of submitted Requests:</h2>
+            <ul id="requestList"></ul>
+        </div>
+    </div>
+
+        <!-- Link to the JavaScript file -->
         <script src="script.js"></script>
     </body>
 </html>

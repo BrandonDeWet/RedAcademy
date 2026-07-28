@@ -1,9 +1,75 @@
+// Adding an array
+let requests = [];
+
+// Adding const variables based off our HTML page Note, The ID's are based off the id's in the HTML
+const form = document.getElementById("requestForm");
+const requesterName = document.getElementById("requesterName");
+const department = document.getElementById("department");
+const resourceType = document.getElementById("resourceType");
+const details = document.getElementById("details");
+const urgency = document.getElementById("urgency");
+
+// Function for adding an event listener to our form
+form.addEventListener("submit",function(event){
+  // Add the below to prevent the page from refreshing
+  event.preventDefault();
+  // Object creation for containing all request data
+  const request = {
+    requester: requesterName.value,
+    department: department.value,
+    resource: resourceType.value,
+    details: details.value,
+    priority: urgency.value
+  };
+  // Pushes data into the array for the request variable above and calls the different functions
+  requests.push(request);
+  displaySummary(request);
+  displayRequestList();
+});
+
+// Logs out to the Console when JS gets loaded via the HTML page
 console.log("JavaScript file loaded.");
 
-//The welcomeBtn is the ID given to the button in HTML
-const button = document.getElementById("welcomeBtn");
+// Add function to display information gathered from the form
+// When adding a string in JS, do not use ' but rather use ` else you will get code errors
+function displaySummary(request){
+  summaryContent.innerHTML = `
+  <p><strong>Requester:</strong> ${request.requester}</p>
+  <p><strong>Department:</strong> ${request.department}</p>
+  <p><strong>Resource:</strong> ${request.resource}</p>
+  <p><strong>Description:</strong> ${request.details}</p>
+  <p><strong>Priority:</strong> ${request.priority}</p>
+  `;
+  console.log("Summary function has been called for " + request.requester)
+}
+
+// Created function to display the values and loop through the values for each request
+function displayRequestList(){
+  requestList.innerHTML = "";
+
+  // Loop through every request
+  requests.forEach(function(request,index){
+  // This const variable creates a empty list tag in the HTML to append your providedValues based on what the user typed.
+  const providedValues = document.createElement("li");
+  providedValues.innerHTML = `
+  <strong>Request ${index+1}</strong><br><br>
+  <b>Name:</b> ${request.requester}<br>
+  <b>Department:</b> ${request.department}<br>
+  <b>Resource:</b> ${request.resource}<br>
+  <b>Description:</b> ${request.details}<br>
+  <b>Priority:</b> ${request.priority}
+  `;
+  console.log("List function called and should display on the HTML page")
+  requestList.appendChild(providedValues);
+  });
+
+}
+
+//The requestSend is the ID given to the button in HTML
+const button = document.getElementById("requestSend");
 
 button.addEventListener("click", function() {
-  alert("Welcome to my First JavaScript page!")
+  console.log("User clicked on the submit button")
+  alert("Thank you, your Request has been received!")
 });
 

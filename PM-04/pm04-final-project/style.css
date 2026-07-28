@@ -1,11 +1,93 @@
+/* This is to style the body id from the HTML */
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #dadada;
+    margin: 0;
+    padding: 40px;
 }
 
-button {
-    background: #e01f26;
-    color: white;
-    border: none;
-    padding: 10px, 16px;
+/* This section will be used to add styling to the form-container class id from the HTML */
+.form-container {
+    width: 750px;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgb(44, 44, 44);
+}
+/* Updates your H1 heading tag in your HTML */
+h1 {
+   text-align: center;
+   color: #e01f26;
+}
+
+/* Updates your H1 heading tag in your HTML */
+h2 {
+   text-align: center;
+}
+
+/* Updates your form-group id class in your HTML */
+.form-group {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+/* These lables are found inside of your div classes */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+/* This will update your input section for the text area  */
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+    font-size:16px;
+}
+
+/* Submit Button styling */
+button{
+    width:100%;
+    padding:12px;
+    background:#ca0707;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:18px;
+}
+/* Adds functionality for hovering over a button */
+button:hover{
+    background-color: #7c0505;
+}
+
+/* Added a section for the HTML section to include the JS output of the client request  */
+.summary{
+    margin-top:35px;
+    padding:20px;
+    background: rgb(197, 196, 196);
+    border-radius:15px;
+    box-shadow: 0 0 15px rgb(44, 44, 44);
+}
+
+/* Adds functionality to the id request-list*/
+.request-list{
+    margin-top:30px;
+}
+/* Adds functionality to the unordered list for the id request-list */
+.request-list li{
+    background: rgb(197, 196, 196);
+    margin-bottom:10px;
+    padding:15px;
+    border-left:5px solid #ca0707;
+    list-style:none;
 }
