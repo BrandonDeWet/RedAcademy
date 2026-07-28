@@ -63,3 +63,24 @@ button{
 button:hover{
     background-color: #7c0505;
 }
+
+/* Added a section for the HTML section to include the JS output of the client request  */
+.summary{
+    margin-top:35px;
+    padding:20px;
+    background: white;
+    border-radius:8px;
+}
+
+/* Adds functionality to the id request-list*/
+.request-list{
+    margin-top:30px;
+}
+/* Adds functionality to the unordered list for the id request-list */
+.request-list li{
+    background: white;
+    margin-bottom:10px;
+    padding:15px;
+    border-left:5px solid #ca0707;
+    list-style:none;
+}

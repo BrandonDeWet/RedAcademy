@@ -21,8 +21,10 @@ form.addEventListener("submit",function(event){
     details: details.value,
     priority: urgency.value
   };
-  // Pushes data into the array for the request variable above
+  // Pushes data into the array for the request variable above and calls the different functions
   requests.push(request);
+  displaySummary(request);
+  displayRequestList();
 });
 
 // Logs out to the Console when JS gets loaded via the HTML page
@@ -33,7 +35,34 @@ console.log("JavaScript file loaded.");
 function displaySummary(request){
   summaryContent.innerHTML = `
   <p><strong>Requester:</strong> ${request.requester}</p>
+  <p><strong>Department:</strong> ${request.department}</p>
+  <p><strong>Resource:</strong> ${request.resource}</p>
+  <p><strong>Description:</strong> ${request.details}</p>
+  <p><strong>Priority:</strong> ${request.priority}</p>
   `;
+  console.log("Summary function has been called for " + $request.requester)
+}
+
+// Created function to display the values and loop through the values for each request
+function displayRequestList(){
+  requestList.innerHTML = "";
+
+  // Loop through every request
+  requests.forEach(function(request,index){
+  // This const variable creates a empty list tag in the HTML to append your providedValues based on what the user typed.
+  const providedValues = document.createElement("li");
+  providedValues.innerHTML = `
+  <strong>Request ${index+1}</strong><br><br>
+  <b>Name:</b> ${request.requester}<br>
+  <b>Department:</b> ${request.department}<br>
+  <b>Resource:</b> ${request.resource}<br>
+  <b>Description:</b> ${request.details}<br>
+  <b>Priority:</b> ${request.priority}
+  `;
+  console.log("List function called and should display on the HTML page")
+  requestList.appendChild(providedValues);
+  });
+
 }
 
 //The requestSend is the ID given to the button in HTML
@@ -41,6 +70,6 @@ const button = document.getElementById("requestSend");
 
 button.addEventListener("click", function() {
   console.log("User clicked on the submit button")
-  alert("Your Request has been sent!")
+  alert("Thank you, your Request has been received!")
 });
 
