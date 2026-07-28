@@ -25,7 +25,7 @@ form.addEventListener("submit",function(event){
   requests.push(request);
   displaySummary(request);
   displayRequestList();
-  checkPriorityLevel(request.priority);
+  checkPriorityLevel(request.urgency);
 });
 
 // Logs out to the Console when JS gets loaded via the HTML page
@@ -69,12 +69,12 @@ function displayRequestList(){
 // Function to call Priority Level
 function checkPriorityLevel(level){
   if (level === "Low") {
-    priorityLevel.innerHTML = request.resource + " has been marked as Low Priority";
+    priorityLevel.innerHTML = "Request has been marked as Low Priority.";
   } 
   else if (level === "Medium") {
-    priorityLevel.innerHTML = request.resource + " has been marked as Medium Priority";
+    priorityLevel.innerHTML = "Request has been marked as Medium Priority.";
   }
-  console.log("User: " + request.requester + "has created a " +  request.priority + " request.")
+  console.log("User has created a request.")
 }
 
 //The requestSend is the ID given to the button in HTML
