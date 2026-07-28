@@ -40,7 +40,7 @@ function displaySummary(request){
   <p><strong>Description:</strong> ${request.details}</p>
   <p><strong>Priority:</strong> ${request.priority}</p>
   `;
-  console.log("Summary function has been called for " + $request.requester)
+  console.log("Summary function has been called for " + request.requester)
 }
 
 // Created function to display the values and loop through the values for each request
