@@ -69,12 +69,12 @@ button{
 button:hover{
     background-color: #7c0505;
 }
-
+/* Note: Classes are defined with a . and ID's are defined with a # */
 /* Added a section for the HTML section to include the JS output of the client request  */
 .summary{
     margin-top:35px;
     padding:20px;
-    background: rgb(197, 196, 196);
+    background: #dadada;
     border-radius:15px;
     box-shadow: 0 0 15px rgb(44, 44, 44);
 }
@@ -85,12 +85,26 @@ button:hover{
 }
 /* Adds functionality to the unordered list for the id request-list */
 .request-list li{
-    background: rgb(197, 196, 196);
+    background: #dadada;
     margin-bottom:10px;
     padding:15px;
-    border-left:5px solid #ca0707;
     list-style:none;
 }
+
+/* Custom config for the request list based on the priority chosen */
+.Low {
+    border-left-color: 5px solid lightskyblue;
+}
+.Medium {
+    border-left-color: 5px solid green;
+}
+.High {
+    border-left-color: 5px solid yellow;
+}
+.Critical {
+    border-left-color: 5px solid red;
+}
+
 
 /* Adding Priority function message styling */
 #priorityLevel{
