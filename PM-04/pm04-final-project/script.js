@@ -24,9 +24,14 @@ form.addEventListener("submit",function(event){
   };
   // Pushes data into the array for the request variable above and calls the different functions
   requests.push(request);
+  // calls the display summary function
   displaySummary(request);
+  // calls the Request List function
   displayRequestList();
+  // calls the priorityLevel function
   checkPriorityLevel(request.priority);
+  // Function to reset the form to empty after submitting
+  form.reset()
 });
 
 // Logs out to the Console when JS gets loaded via the HTML page
