@@ -92,17 +92,17 @@ button:hover{
 }
 
 /* Custom config for the request list based on the priority chosen */
-.Low {
-    border-left-color: 5px solid lightskyblue;
+.request-list li.Low {
+    border-left: 5px solid lightskyblue;
 }
-.Medium {
-    border-left-color: 5px solid green;
+.request-list li.Medium {
+    border-left: 5px solid green;
 }
-.High {
-    border-left-color: 5px solid yellow;
+.request-list li.High {
+    border-left: 5px solid yellow;
 }
-.Critical {
-    border-left-color: 5px solid red;
+.request-list li.Critical {
+    border-left: 5px solid red;
 }
 
 
