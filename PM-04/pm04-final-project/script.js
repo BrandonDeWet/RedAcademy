@@ -40,6 +40,7 @@ console.log("JavaScript file loaded.");
 
 // ------------------Functions will live here --------------------
 // function for submit button validate if fields are populated
+// !== means that it should not equal the value of null
 function validateForm() {
   if (
     requesterName.value.trim() !== "" &&
