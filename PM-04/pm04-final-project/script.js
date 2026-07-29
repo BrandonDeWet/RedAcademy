@@ -7,7 +7,6 @@ const requesterName = document.getElementById("requesterName");
 const department = document.getElementById("department");
 const resourceType = document.getElementById("resourceType");
 const details = document.getElementById("details");
-const urgency = document.getElementById("urgency");
 const priorityLevel = document.getElementById("priorityLevel");
 
 // Function for adding an event listener to our form
@@ -20,7 +19,7 @@ form.addEventListener("submit",function(event){
     department: department.value,
     resource: resourceType.value,
     details: details.value,
-    priority: urgency.value
+    priority: priority.value
   };
   // Pushes data into the array for the request variable above and calls the different functions
   requests.push(request);
@@ -58,13 +57,15 @@ function displayRequestList(){
   requests.forEach(function(request,index){
   // This const variable creates a empty list tag in the HTML to append your providedValues based on what the user typed.
   const providedValues = document.createElement("li");
+  // adds my priority level to a class which can be used by the css
+  providedValues.classList.add(request.priority);
+  console.log(providedValues.className)
   providedValues.innerHTML = `
-  <strong>Request ${index+1}</strong><br><br>
+  <strong>Priority ${request.priority}</strong><br><br>
   <b>Name:</b> ${request.requester}<br>
   <b>Department:</b> ${request.department}<br>
   <b>Resource:</b> ${request.resource}<br>
   <b>Description:</b> ${request.details}<br>
-  <b>Priority:</b> ${request.priority}
   `;
   console.log("List function called and should display on the HTML page")
   requestList.appendChild(providedValues);
@@ -89,8 +90,7 @@ function checkPriorityLevel(priority){
 
 //The requestSend is the ID given to the button in HTML
 const button = document.getElementById("requestSend");
-
-button.addEventListener("click", function() {
+button.addEventListener("click", function(){
   console.log("User clicked on the submit button")
   alert("Thank you, your Request has been received!")
 });
