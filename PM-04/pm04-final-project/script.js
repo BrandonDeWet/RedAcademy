@@ -31,10 +31,28 @@ form.addEventListener("submit",function(event){
   checkPriorityLevel(request.priority);
   // Function to reset the form to empty after submitting
   form.reset()
+  // Calling validate form
+  validateForm();
 });
 
 // Logs out to the Console when JS gets loaded via the HTML page
 console.log("JavaScript file loaded.");
+
+// ------------------Functions will live here --------------------
+// function for submit button validate if fields are populated
+// !== means that it should not equal the value of null
+function validateForm() {
+  if (
+    requesterName.value.trim() !== "" &&
+    department.value.trim() !== "" &&
+    resourceType.value.trim() !== "" &&
+    priority.value.trim() !== ""
+  ) {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+  }
+}
 
 // Add function to display information gathered from the form
 // When adding a string in JS, do not use ' but rather use ` else you will get code errors
@@ -52,7 +70,6 @@ function displaySummary(request){
 // Created function to display the values and loop through the values for each request
 function displayRequestList(){
   requestList.innerHTML = "";
-
   // Loop through every request
   requests.forEach(function(request,index){
   // This const variable creates a empty list tag in the HTML to append your providedValues based on what the user typed.
@@ -87,9 +104,18 @@ function checkPriorityLevel(priority){
   }
   console.log("User has created a Request with a priority level: " + priority)
 }
+// ------------------Functions end here --------------------
 
 //The requestSend is the ID given to the button in HTML
 const button = document.getElementById("requestSend");
+
+// add eventlister for the function validateform
+requesterName.addEventListener("input", validateForm);
+department.addEventListener("change", validateForm);
+resourceType.addEventListener("change", validateForm);
+details.addEventListener("input", validateForm);
+priority.addEventListener("change", validateForm);
+
 button.addEventListener("click", function(){
   console.log("User clicked on the submit button")
   alert("Thank you, your Request has been received!")
