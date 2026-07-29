@@ -61,12 +61,11 @@ function displayRequestList(){
   providedValues.classList.add(request.priority);
   console.log(providedValues.className)
   providedValues.innerHTML = `
-  <strong>Request ${index+1}</strong><br><br>
+  <strong>Priority ${request.priority}</strong><br><br>
   <b>Name:</b> ${request.requester}<br>
   <b>Department:</b> ${request.department}<br>
   <b>Resource:</b> ${request.resource}<br>
   <b>Description:</b> ${request.details}<br>
-  <b>Priority:</b> ${request.priority}
   `;
   console.log("List function called and should display on the HTML page")
   requestList.appendChild(providedValues);
@@ -91,7 +90,7 @@ function checkPriorityLevel(priority){
 
 //The requestSend is the ID given to the button in HTML
 const button = document.getElementById("requestSend");
-button.addEventListener("click", function() {
+button.addEventListener("click", function(){
   console.log("User clicked on the submit button")
   alert("Thank you, your Request has been received!")
 });
