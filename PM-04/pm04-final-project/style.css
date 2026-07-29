@@ -91,3 +91,12 @@ button:hover{
     border-left:5px solid #ca0707;
     list-style:none;
 }
+
+/* Adding Priority function message styling */
+#priorityLevel{
+   margin-top: 20px;
+   padding: 15px;
+   border-radius: 10px;
+   font-weight: bold;
+   text-align: center; 
+}

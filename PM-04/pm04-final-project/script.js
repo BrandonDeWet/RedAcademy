@@ -8,6 +8,7 @@ const department = document.getElementById("department");
 const resourceType = document.getElementById("resourceType");
 const details = document.getElementById("details");
 const urgency = document.getElementById("urgency");
+const priorityLevel = document.getElementById("priorityLevel");
 
 // Function for adding an event listener to our form
 form.addEventListener("submit",function(event){
@@ -23,8 +24,14 @@ form.addEventListener("submit",function(event){
   };
   // Pushes data into the array for the request variable above and calls the different functions
   requests.push(request);
+  // calls the display summary function
   displaySummary(request);
+  // calls the Request List function
   displayRequestList();
+  // calls the priorityLevel function
+  checkPriorityLevel(request.priority);
+  // Function to reset the form to empty after submitting
+  form.reset()
 });
 
 // Logs out to the Console when JS gets loaded via the HTML page
@@ -63,6 +70,21 @@ function displayRequestList(){
   requestList.appendChild(providedValues);
   });
 
+}
+
+// Function to call Priority Level. IF statement to check if criteria is matched
+// == will be the values need to match, === will be when data type and values match.
+function checkPriorityLevel(priority){
+  if (priority === "Low") {
+    priorityLevel.innerHTML = "Request has been marked as Low Priority.";
+  } else if (priority === "Medium") {
+    priorityLevel.innerHTML = "Request has been marked as Medium Priority.";
+  } else if (priority === "High") {
+    priorityLevel.innerHTML = "Request has been marked as High Priority."
+  } else if (priority === "Critical") {
+    priorityLevel.innerHTML = "Request has been marked as Critical!!!"
+  }
+  console.log("User has created a Request with a priority level: " + priority)
 }
 
 //The requestSend is the ID given to the button in HTML
