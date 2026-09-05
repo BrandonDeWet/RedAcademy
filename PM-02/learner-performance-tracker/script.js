@@ -1,6 +1,7 @@
-const studentDetails = [
+//Array Created for Learners
+const learners = [
     {
-        studentNumber: "BDW-001",
+        studentNumber: "BDW001",
         name: "Brandon",
         surname: "De Wet",
         score: 85,
@@ -8,7 +9,7 @@ const studentDetails = [
         isSubmitted: true
     },
     {
-        studentNumber: "RW-002",
+        studentNumber: "RW002",
         name: "Ryan",
         surname: "Ward",
         score: 65,
@@ -16,7 +17,7 @@ const studentDetails = [
         isSubmitted: true
     },
     {
-        studentNumber: "JK-003",
+        studentNumber: "JK003",
         name: "Johan",
         surname: "Kruger",
         score: 45,
@@ -24,7 +25,7 @@ const studentDetails = [
         isSubmitted: true
     },
     {
-        studentNumber: "FF-004",
+        studentNumber: "FF004",
         name: "Firdows",
         surname: "Fakier",
         score: 75,
@@ -32,69 +33,124 @@ const studentDetails = [
         isSubmitted: true
     },
     {
-        studentNumber: "EW-005",
+        studentNumber: "EW005",
         name: "Elton",
         surname: "Williams",
-        score: 85,
+        score: 120,
         attendance: 95,
-        isSubmitted: false
+        isSubmitted: true
     },
     {
-        studentNumber: "ZM-006",
+        studentNumber: "ZM006",
         name: "Zaakir",
         surname: "Mitchell",
-        score: 49,
-        attendance: 79,
+        score: 91,
+        attendance: 101,
         isSubmitted: false
     }
 
 ];
 
-console.log("JavaScript has loaded.")
+// Function created to ensure learners score and attendance are based on 100 and cannot be lower than 0 and
+// value must be a numeber.
+function validateLearner(learner) {
+    const errors = []; //Empty array which invalid entries will be pushed to.
 
-// Select DOM Elements:
-const checkButton = document.getElementById("checkBtn");
-const textInput = document.getElementById("textBlock");
-const resultDisplay = document.getElementById("resultDisplay");
-
-
-// Function triggered when button is clicked
-checkButton.addEventListener("click",function(){
-  // Add the below to prevent the page from refreshing
-  const enteredStudentNumber  = textInput.value.trim().toUpperCase();
-
-    // Ensure that there is actual values specified in the text area and not NULL
-    if (enteredStudentNumber === "") {
-        resultDisplay.textContent = "Please enter a student number.";
-        // This prints out if there is no studentDetails.
-        console.log("No student Information found!");
-        return;
+    if (typeof learner.score !== "number" || learner.score < 0 || learner.score > 100) {
+        errors.push(`Invalid score value: ${learner.score}`);
     }
 
-    // Find the single student matching the entered student number
-    const student = studentDetails.find(s => s.studentNumber.toUpperCase() === enteredStudentNumber);
-
-    // If no student matches, update the UI and stop
-    if (!student) {
-        resultDisplay.textContent = "Student number not found. Please try again.";
-        return;
+    if (typeof learner.attendance !== "number" || learner.attendance < 0 || learner.score > 100) {
+        errors.push(`Invalid attendance value: ${learner.attendance}`);
     }
 
-    // Run your exact evaluation logic on the matched student
-    let message = "";
-    if (student.score >= 80 && student.attendance >= 90 && student.isSubmitted === true) {
-        message = `${student.name} ${student.surname} has a score: ${student.score}% and attendance: ${student.attendance}%, Result is Excellent`;
-        console.log(`${student.name} ${student.surname} results are Excellent`);
-    } 
-    else if (student.score >= 50 && student.attendance >= 80 && student.isSubmitted === true) {
-        message = `${student.name} ${student.surname} has a score: ${student.score}% and attendance: ${student.attendance}%, Result is Competent!`;
-        console.log(`${student.name} ${student.surname} results are Competent`);
-    } 
+    const isValid = errors.length === 0;
+    return { isValid, errors };
+}
+// Function to get learner status's,
+// If score is above or equal to 80 and attendance is above or equal to 90 and must have submitted is true = Excellent.
+// If score is above or equal to 50 and attendance is above or equal to 80 and must have submitted is true = Competent.
+// If none of the criteria is met then return Not Yet Competent
+function getLearnerStatus(learner) {
+    const {score, attendance, isSubmitted } = learner;
+
+    if (score >= 80 && attendance >= 90 && isSubmitted === true) {
+        return "Excellent";
+    }
+    else if (score >= 50 && attendance >= 80 && isSubmitted === true) {
+        return "Competent";
+    }
     else {
-        message = `${student.name} ${student.surname} has a score: ${student.score}% and attendance: ${student.attendance}%, Does not meet the Requirements! Not Yet Competent.`;
-        console.log(`${student.name} ${student.surname} results are Not Yet Competent.`);
+        return "Not Yet Competent"
+    }
+}
+// Function to display all learner information inside the console log.
+function displayLearner(learner, status) {
+    console.log("--------------------------------");
+    console.log(`Student Number: ${learner.studentNumber}`);
+    console.log(`Name: ${learner.name} ${learner.surname}`);
+    console.log(`Score: ${learner.score}%`);
+    console.log(`Attendance: ${learner.score}%`);
+    console.log(`Submitted: ${learner.isSubmitted}`);
+    console.log(`Status: ${status}`);
+}
+
+// Calculate average and returns as a string with 1 decimal point.
+function calculateAverage(total, count) {
+    if (count === 0) {
+        return "0.0"; // returns string
+    }
+    return (total / count).toFixed(1); // This sets it to be 1 decimal point
+}
+
+// Loops through the learners array once, displaying each valid learner and builds the structure required for the summary breakdown.
+function processAllLearners(learnerList) {
+    let totalScore = 0;
+    let excellentCount = 0;
+    let compentCount = 0;
+    let notYetCompetentCount = 0;
+    let validCount = 0;
+    const invalidLearners = [];
+
+    for (const learner of learnerList) {
+        const validation = validateLearner(learner);
+// Checks invalid entries from the learners array and pushed to a invalidLearners array.
+        if (!validation.isValid) {
+            console.log("--------------------------------");
+            console.log(`Student Number: ${learner.studentNumber}`);
+            console.log(`Name: ${learner.name} ${learner.surname}`);
+            console.log("Status: Invalid Data");
+            validation.errors.forEach((error) => console.log(`${error}`)); //this is calling the validation const and does a forEach on the error key
+            invalidLearners.push(learner);
+            continue;
+        }
+// Will do calculations based on learner status and return how many entries are for each for the learners array.
+        const status = getLearnerStatus(learner);
+        displayLearner(learner, status);
+        totalScore += learner.score;
+        validCount++; 
+
+        if (status === "Excellent") {
+            excellentCount++;
+        }
+        else if (status === "Competent") {
+            compentCount++;
+        }
+        else {
+            notYetCompetentCount++;
+        }
     }
 
-    // Push the text to the HTML page
-    resultDisplay.textContent = message;
-});
+    return {
+        totalScore,
+        validCount,
+        excellentCount,
+        compentCount,
+        notYetCompetentCount,
+        invalidLearners
+    };
+}
+
+
+console.log("========================================\nLEARNER PERFORMANCE TRACKER\n========================================")
+const stats = processAllLearners(learners);
