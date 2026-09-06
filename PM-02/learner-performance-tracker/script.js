@@ -84,6 +84,24 @@ function getLearnerStatus(learner) {
         return "Not Yet Competent"
     }
 }
+
+// Receives a learner object and returns an array of every intervention
+function getInterventionReasons(learner) {
+  const reasons = [];
+
+  if (learner.score < 50) {
+    reasons.push("Score below 50%");
+  }
+  if (learner.attendance < 80) {
+    reasons.push("Attendance below 80%");
+  }
+  if (learner.isSubmitted === false) {
+    reasons.push("Assessment not submitted");
+  }
+
+  return reasons;
+}
+
 // Function to display all learner information inside the console log.
 function displayLearner(learner, status) {
     console.log("--------------------------------");
@@ -151,6 +169,73 @@ function processAllLearners(learnerList) {
     };
 }
 
+// Function to display totals of learner results
+function displaySummary(stats) {
+    const averageScore = calculateAverage(stats.totalScore, stats.validCount);
 
-console.log("========================================\nLEARNER PERFORMANCE TRACKER\n========================================")
+    console.log("========================================\nPERFORMANCE SUMMARY\n========================================");
+    console.log(`Total Learners: ${stats.validCount}`);
+    console.log(`Excellent Learners: ${stats.excellentCount}`);
+    console.log(`Competent Learners: ${stats.compentCount}`);
+    console.log(`Not Yet Competent: ${stats.notYetCompetentCount}`);
+    console.log(`Average Score: ${averageScore}%`);
+
+    if (stats.invalidLearners.length > 0) {
+        console.log(`Learners Excluded: ${stats.invalidLearners.length}`);
+    };
+}
+
+// Function to generate a List of learners needing intervention and reason why 
+function displayInterventionReport(learnerList) {
+    console.log("========================================\nLEARNERS REQUIRING INTERVENTION\n========================================");
+
+    let interventionCount = 0;
+
+    for (const learner of learnerList) {
+        const validation = validateLearner(learner);
+        if (!validation.isValid) {
+            continue;
+        }
+
+        const reasons = getInterventionReasons(learner);
+
+        if (reasons.length > 0) {
+            interventionCount++;
+            console.log(`${learner.name} ${learner.surname}`);
+            console.log(reasons.length === 1 ? "Reason:" : "Reasons:"); //Logic allows for a reason to be passed based on condition set.
+            reasons.forEach((reason) => console.log(`- ${reason}`));
+            console.log("");
+        }
+    }
+
+    if (interventionCount === 0) {
+        console.log("No learners currently require intervention.");
+    }
+}
+
+// Function to test results against expected data.
+function runTests() {
+    console.log("========================================\nTEST RESULTS\n========================================");
+    
+    const testCases = [
+        { score: 85, attendance: 95, isSubmitted: true, expected: "Excellent" },
+        { score: 65, attendance: 85, isSubmitted: true, expected: "Competent" },
+        { score: 45, attendance: 90, isSubmitted: true, expected: "Not Yet Competent" },
+        { score: 75, attendance: 70, isSubmitted: true, expected: "Not Yet Competent" },
+        { score: 85, attendance: 95, isSubmitted: false, expected: "Not Yet Competent" },
+        { score: 49, attendance: 79, isSubmitted: false, expected: "Not Yet Competent" },
+        { score: 50, attendance: 80, isSubmitted: true, expected: "Competent" } // boundary test
+    ];
+
+    testCases.forEach((test, index) => {
+        const result = getLearnerStatus(test);
+        const outcome = result === test.expected ? "PASS" : "FAIL"; //Decision making condition
+        console.log(`Test ${index + 1}: expected "${test.expected}", got "${result}" -> ${outcome}`);
+    });
+}
+
+console.log("========================================\nLEARNER PERFORMANCE TRACKER\n========================================");
 const stats = processAllLearners(learners);
+displaySummary(stats);
+displayInterventionReport(learners);
+runTests();
