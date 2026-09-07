@@ -234,6 +234,7 @@ function runTests() {
     });
 }
 
+// Calling Functions above
 console.log("========================================\nLEARNER PERFORMANCE TRACKER\n========================================");
 const stats = processAllLearners(learners);
 displaySummary(stats);
