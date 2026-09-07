@@ -39,12 +39,16 @@ Tests conducted explanation:
     We also tested a boundary case (score 50, attendance 80, submitted true → expected "Competent") to confirm the >= comparisons are inclusive at the exact threshold, and tested an invalid data case (attendance of 125) to confirm validateLearner() flags it and excludes it from the summary statistics instead of letting it silently skew the average.
 
 Reflection:
-
+???
 
 1. What part of the program did I primarily work on?
+???
 
 2. What problem did your team encounter?
+???
 
 3. How did you solve it?
+???
 
 4. What JavaScript concept do you understand better after completing this project?
+???
