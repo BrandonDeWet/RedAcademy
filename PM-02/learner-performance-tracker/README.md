@@ -39,16 +39,16 @@ Tests conducted explanation:
     We also tested a boundary case (score 50, attendance 80, submitted true → expected "Competent") to confirm the >= comparisons are inclusive at the exact threshold, and tested an invalid data case (attendance of 125) to confirm validateLearner() flags it and excludes it from the summary statistics instead of letting it silently skew the average.
 
 Reflection:
-???
+This project really challenged my ability to apply knowledge learnt in the KM02 however I feel I did well on this practical as I was able to apply and understand what I have put down. I have used AI and W3 schools to get a better understanding.
 
 1. What part of the program did I primarily work on?
-???
+I worked on the code for JavaScript as well as the index.html and attached evidence of testing to the evidence folder as well.
 
 2. What problem did your team encounter?
-???
+None
 
 3. How did you solve it?
-???
+Adding comments to my code for my partner to understand.
 
 4. What JavaScript concept do you understand better after completing this project?
-???
+I understand functions, loops, conditional and if statements a lot better, I did have some struggles but using W3schools and a bit of AI I was able to work through this project a bit easier.
