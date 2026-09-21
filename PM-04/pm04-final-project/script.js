@@ -1,13 +1,19 @@
 // Adding an array
 let requests = [];
 
-// Adding const variables based off our HTML page Note, The ID's are based off the id's in the HTML
-const form = document.getElementById("requestForm");
-const requesterName = document.getElementById("requesterName");
-const department = document.getElementById("department");
-const resourceType = document.getElementById("resourceType");
-const details = document.getElementById("details");
-const priorityLevel = document.getElementById("priorityLevel");
+const form = document.getElementById("requestForm"); // The requestForm is the ID given to the form in HTML
+const requesterName = document.getElementById("requesterName"); // The requesterName is the ID given to the text field in HTML
+const emailAddress = document.getElementById("emailAddress");  // The emailAddress is the ID given to the email field in HTML
+const emailError = document.getElementById("emailError"); // This const is specifically used for error handling in the event listner below
+const department = document.getElementById("department"); // The department is the ID given to the drop down department field in HTML
+const resourceType = document.getElementById("resourceType"); // The resourceType is the ID given to the resource type drop down  field in HTML
+const details = document.getElementById("details"); // The details is the ID given to the test description field in HTML
+const priority = document.getElementById("priority");
+const priorityLevel = document.getElementById("priorityLevel"); // The priorityLevel is the ID given to the priority field in HTML
+const button = document.getElementById("requestSend"); // The requestSend is the ID given to the button in HTML
+
+// Logs out to the Console when JS gets loaded via the HTML page
+console.log("JavaScript file loaded.");
 
 // Function for adding an event listener to our form
 form.addEventListener("submit",function(event){
@@ -16,11 +22,13 @@ form.addEventListener("submit",function(event){
   // Object creation for containing all request data
   const request = {
     requester: requesterName.value,
+    email: emailAddress.value,
     department: department.value,
     resource: resourceType.value,
     details: details.value,
     priority: priority.value
   };
+
   // Pushes data into the array for the request variable above and calls the different functions
   requests.push(request);
   // calls the display summary function
@@ -29,23 +37,28 @@ form.addEventListener("submit",function(event){
   displayRequestList();
   // calls the priorityLevel function
   checkPriorityLevel(request.priority);
+  // Alert pop up on webpage
+  alert(`Thank you, ${request.requester} your Request has been received, and an update will be provided to ${request.email}.`)
   // Function to reset the form to empty after submitting
   form.reset()
+  // Reset borders and errors after form submitting
+  emailAddress.style.borderColor = '';
   // Calling validate form
   validateForm();
 });
 
-// Logs out to the Console when JS gets loaded via the HTML page
-console.log("JavaScript file loaded.");
 
-// ------------------Functions will live here --------------------
 // function for submit button validate if fields are populated
 // !== means that it should not equal the value of null
 function validateForm() {
+  const emailPattern = /^[^\s@]+@redpandasoftware\.co\.za$/i;
+  const isEmailValid = emailPattern.test(emailAddress.value.trim());
+
   if (
     requesterName.value.trim() !== "" &&
     department.value.trim() !== "" &&
     resourceType.value.trim() !== "" &&
+    isEmailValid && // Form only validates if email layout is correct
     priority.value.trim() !== ""
   ) {
     button.disabled = false;
@@ -64,7 +77,7 @@ function displaySummary(request){
   <p><strong>Description:</strong> ${request.details}</p>
   <p><strong>Priority:</strong> ${request.priority}</p>
   `;
-  console.log("Summary function has been called for " + request.requester)
+  console.log(`Summary function has been called for ${request.requester}`);
 }
 
 // Created function to display the values and loop through the values for each request
@@ -73,25 +86,24 @@ function displayRequestList(){
   // Loop through every request
   requests.forEach(function(request,index){
   // This const variable creates a empty list tag in the HTML to append your providedValues based on what the user typed.
-  const providedValues = document.createElement("li");
-  // adds my priority level to a class which can be used by the css
-  providedValues.classList.add(request.priority);
-  console.log(providedValues.className)
-  providedValues.innerHTML = `
-  <strong>Priority ${request.priority}</strong><br><br>
-  <b>Name:</b> ${request.requester}<br>
-  <b>Department:</b> ${request.department}<br>
-  <b>Resource:</b> ${request.resource}<br>
-  <b>Description:</b> ${request.details}<br>
-  `;
+    const providedValues = document.createElement("li");
+    // adds my priority level to a class which can be used by the css
+    providedValues.classList.add(request.priority);
+    console.log(providedValues.className)
+    providedValues.innerHTML = `
+    <strong>Priority ${request.priority}</strong><br><br>
+    <b>Name:</b> ${request.requester}<br>
+    <b>Email:</b> ${request.email}<br>
+    <b>Department:</b> ${request.department}<br>
+    <b>Resource:</b> ${request.resource}<br>
+    <b>Description:</b> ${request.details}<br>
+    `;
   console.log("List function called and should display on the HTML page")
   requestList.appendChild(providedValues);
   });
-
 }
 
 // Function to call Priority Level. IF statement to check if criteria is matched
-// == will be the values need to match, === will be when data type and values match.
 function checkPriorityLevel(priority){
   if (priority === "Low") {
     priorityLevel.innerHTML = "Request has been marked as Low Priority.";
@@ -102,22 +114,32 @@ function checkPriorityLevel(priority){
   } else if (priority === "Critical") {
     priorityLevel.innerHTML = "Request has been marked as Critical!!!"
   }
-  console.log("User has created a Request with a priority level: " + priority)
+  console.log(`User has created a Request with a priority level: ${priority}`);
 }
-// ------------------Functions end here --------------------
 
-//The requestSend is the ID given to the button in HTML
-const button = document.getElementById("requestSend");
 
-// add eventlister for the function validateform
-requesterName.addEventListener("input", validateForm);
+// add event lister for the function validate form
+requesterName.addEventListener('input',function (event) {
+  // replaces any number with a blank line
+  this.value = this.value.replace(/[0-9]/g, '');
+});
+
 department.addEventListener("change", validateForm);
 resourceType.addEventListener("change", validateForm);
 details.addEventListener("input", validateForm);
 priority.addEventListener("change", validateForm);
 
-button.addEventListener("click", function(){
-  console.log("User clicked on the submit button")
-  alert("Thank you, your Request has been received!")
+// Event listener to add validation to my email html field
+emailAddress.addEventListener('input', function (event) {
+  const emailValue = this.value.trim();
+  const emailPattern = /^[^\s@]+@redpandasoftware\.co\.za$/i;
+  
+  if (emailPattern.test(emailValue)) {
+    emailError.style.display = 'none';
+    emailAddress.style.borderColor = 'green'; 
+  } else {
+    emailError.style.display = 'block';
+    emailAddress.style.borderColor = 'red';
+  }
+  validateForm();
 });
-

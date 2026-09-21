@@ -27,10 +27,22 @@
                 <input
                     type="text"
                     id="requesterName"
+                    maxlength="30"
                     placeholder="Enter your Name:"
                     required>
                     <!-- Adding "required makes a field required to be filled in" -->
             </div>
+            <!-- Adding and email address field -->
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input
+                    type="email"
+                    id="emailAddress"
+                    placeholder="email@redpandasoftware.co.za"
+                    pattern="^[^\s@]+@redpandasoftware\.co\.za$"
+                    required>
+            </div>
+            <small id="emailError" style="color: red; display: none; text-align: center;">"Please enter a valid RedPanda email address"</small>
 
             <!-- This will hold the sections for Department selection (DropDown box) -->
             <div class="form-group">
@@ -41,6 +53,7 @@
                     <option>Infrastructure</option>
                     <option>Production Support</option>
                     <option>DevOps</option>
+                    <option>Database Support</option>
                 </select>                
             </div>
 
@@ -51,8 +64,9 @@
                     <option value="">-- Select Resource --</option>
                     <option>Hardware Fault</option>
                     <option>Software Fault</option>
-                    <option>API Error</option>
+                    <option>Service Unresponsive</option>
                     <option>Server Unavailable</option>
+                    <option>Database Connection Timeout</option>
                 </select>
             </div>
 
