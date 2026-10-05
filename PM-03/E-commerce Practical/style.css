@@ -1,0 +1,22 @@
+body {
+    margin: auto;
+    background-color: rgb(22, 106, 161);
+    text-align: center;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+    font-style: italic;
+}
+
+h3 {
+    color: white;
+}
+
+p {
+    color: rgb(255, 255, 255);
+}

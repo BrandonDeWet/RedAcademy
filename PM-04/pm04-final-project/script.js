@@ -85,9 +85,9 @@ function displayRequestList(){
   requestList.innerHTML = "";
   // Loop through every request
   requests.forEach(function(request,index){
-  // This const variable creates a empty list tag in the HTML to append your providedValues based on what the user typed.
+  // This const variable creates an empty list tag in the HTML to append your providedValues based on what the user typed.
     const providedValues = document.createElement("li");
-    // adds my priority level to a class which can be used by the css
+    // adds my priority level to a class which can be used by the CSS
     providedValues.classList.add(request.priority);
     console.log(providedValues.className)
     providedValues.innerHTML = `
@@ -129,7 +129,7 @@ resourceType.addEventListener("change", validateForm);
 details.addEventListener("input", validateForm);
 priority.addEventListener("change", validateForm);
 
-// Event listener to add validation to my email html field
+// Event listener to add validation to my email HTML field
 emailAddress.addEventListener('input', function (event) {
   const emailValue = this.value.trim();
   const emailPattern = /^[^\s@]+@redpandasoftware\.co\.za$/i;
