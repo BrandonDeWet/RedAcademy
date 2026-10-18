@@ -14,7 +14,7 @@ This project provides an interactive portal for internal staff members to log te
 
 ## JavaScript Concepts Used
 - **Variables:** Declared local arrays (`requests`) to act as data stores alongside standard DOM references (`const form`, `const emailAddress`) to handle script operations safely.
-- **Functions:** Implemented programmatic structural blocks (`validateForm`, `displaySummary`, `displayRequestList`, `checkPriorityLevel`) to separate validation checks, UI rendering, and state evaluation logic cleanly.
+- **Functions:** Implemented programmatic structural blocks (`validateForm`, `displaySummary`, `displayRequestList`, `checkPriorityLevel`) to separate validation checks, UI rendering, and state evaluation logic cleanly. Function has been implemneted as well to count the number of tickets that are currently open and resolved on the page.
 - **Arrays or objects:** Structured complete record nodes via inline key-value pairs (e.g., `requester`, `email`, `department`) and pushed those objects securely into a linear tracking collection matrix (`requests.push(request)`).
 - **Conditions:** Leveraged comprehensive logical assertions (`if / else if / else`) to control element styling behaviors and display priority thresholds ("Low", "Medium", "High", "Critical").
 - **Loops:** Handled data parsing cycles through functional iterations (`requests.forEach`) to sweep through existing memory arrays and rebuild standard interface logs dynamically.
@@ -38,3 +38,36 @@ I tested the following:
 
 ## Reflection
 In this project, I learned that JavaScript can be used to dramatically improve standard form workflows, validate real-time text structures securely using advanced regex rules, manipulate layout properties like CSS color bindings dynamically, and process structured data layouts safely on the frontend without forcing problematic page refreshes.
+
+## Ryan Ward changes /2026/10/18
+
+- Five sample tickets load when the page opens.
+- Priority changes require a reason, and Critical tickets cannot have their priority changed.
+- Tickets can be resolved with a mandatory resolution message.
+- Open and Resolved ticket counts update automatically.
+- Console logs and validation support testing and troubleshooting.
+- HTML, CSS and JavaScript changes are documented.
+
+## Features Added:
+- `Five sample tickets:` Five example tickets load automatically whenever the page opens.
+- `Ticket numbers:` Each new ticket receives a unique number during the current page session.
+- `Priority changes:` Users can change the priority of an open ticket, except when its current priority is Critical.
+- `Mandatory priority-change reason:` Users must enter a reason before a priority change is saved. The previous priority, new priority, and reason are displayed in the ticket history.
+- `Ticket resolution:` Users can mark an open ticket as Resolved and must provide a reason.
+- `Ticket status summary:` The page displays the current number of Open and Resolved (closed) tickets, updating when the ticket list changes.
+- `Ticket controls:` Each ticket displays buttons to change its priority or resolve it. Resolved tickets cannot be changed or resolved again.
+
+## Files Updated:
+- `index.html` — Added the Ticket Status Summary section.
+- `style.css` — Added styles for ticket action buttons, priority-change reasons, resolution messages, ticket counts.
+- `script.js` — Added sample tickets, priority-change and resolution functions, ticket status counting, validation, and console logs.
+
+## Testing
+1. Confirm that five sample tickets appear when the page loads.
+2. Change a non-Critical open ticket's priority and provide a reason.
+3. Confirm that a Critical ticket's priority-change button is disabled.
+4. Try saving a priority change without a reason.
+5. Resolve an open ticket and provide a reason.
+6. Confirm that the Open and Resolved counts update.
+7. Create a new ticket and confirm it appears in the list.
+8. Check the browser console for diagnostic messages.
